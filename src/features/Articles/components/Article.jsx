@@ -1,115 +1,33 @@
 import * as React from 'react';
 import {
   Container, Grid, Card, CardContent, CardMedia, 
-  Typography, Button, Chip, Stack 
+  Typography, Button, Chip, Stack, Box
 } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import GradeIcon from '@mui/icons-material/Grade';
 
 export const Article = () => {
   const tenis = [
-    {
-      id: 1,
-      nombre: 'Air max 95 neon',
-      precio: 450000,
-      stock: true,
-      imagen: './img/95.jpeg',
-      descripcion: 'modelo iconico de la silueta airmax 95.',
-      hp: 'Original Edition' // Agregué esto para que coincida con lo que espera tu carrito
-    },
-    {
-      id: 2,
-      nombre: 'Nike dunk low pro sb',
-      precio: 200000,
-      stock: true,
-      imagen: './img/dunk.jpeg',
-      descripcion: 'Zapatilla icónica de la marca Nike.',
-      hp: 'SB Pro'
-    },
-    {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    },
-     {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    },
-     {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    },
-     {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    },
-     {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    },
-     {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    },
-     {
-      id: 3,
-      nombre: 'Airmax Fire',
-      precio: 720000,
-      stock: false,
-      imagen: './img/fire.jpeg',
-      descripcion: 'Par futurista,silueta airmax claisca de nike.',
-      hp: 'Futuristic'
-    }
+    { id: 1, nombre: 'Air max 95 neon', precio: 450000, stock: true, imagen: './img/95.jpeg', descripcion: 'modelo iconico de la silueta airmax 95.', hp: 'Original Edition' },
+    { id: 2, nombre: 'Nike dunk low pro sb', precio: 200000, stock: true, imagen: './img/dunk.jpeg', descripcion: 'Zapatilla icónica de la marca Nike.', hp: 'SB Pro' },
+    { id: 3, nombre: 'Airmax Fire', precio: 720000, stock: false, imagen: './img/fire.jpeg', descripcion: 'Par futurista, silueta airmax clásica de nike.', hp: 'Futuristic' },
+    { id: 4, nombre: 'Jordan 11 gamma blue', precio: 800000, stock: true, imagen: './img/jordan11.webp', descripcion: 'Zapatilla icónica de la marca Jordan.', hp: 'Futuristic' },
+    { id: 5, nombre: 'Jordan 3', precio: 950000, stock: false, imagen: './img/jordan3webp.webp', descripcion: 'Zapatilla icónica creada para jugar baloncesto.', hp: 'Futuristic' },
+    { id: 6, nombre: 'Jordan 8', precio: 550000, stock: false, imagen: './img/jordan8.webp', descripcion: 'Look innovador, con un diseño único y audaz.', hp: 'Futuristic' },
+    { id: 7, nombre: 'Nike DN8', precio: 1085000, stock: true, imagen: './img/dn8.jfif', descripcion: 'Silueta de nike bastante futurista.', hp: 'Futuristic' },
+    { id: 8, nombre: 'Jordan 5', precio: 1250000, stock: true, imagen: './img/jordannegros.jpg', descripcion: 'Zapatilla que innovó en la comodidad.', hp: 'Futuristic' },
+    { id: 9, nombre: 'Nike nocta drake', precio: 3000000, stock: false, imagen: './img/nocta.jfif', descripcion: 'Par único, colaboración con drake.', hp: 'Futuristic' }
   ];
 
   // --- LÓGICA DEL CARRITO ---
   const agregarCarrito = (producto) => {
-    // 1. Obtener lo que ya hay en el carrito (o un array vacío)
     const carrito = JSON.parse(localStorage.getItem("MyCart")) || [];
-
-    // 2. Revisar si ya existe para no duplicar (opcional)
     const existe = carrito.find(item => item.id === producto.id);
 
     if (!existe) {
-      // 3. Importante: Mapeamos 'imagen' a 'img' para que tu componente Carrito lo lea bien
-      const productoParaCarrito = {
-        ...producto,
-        img: producto.imagen 
-      };
-      
+      const productoParaCarrito = { ...producto, img: producto.imagen };
       carrito.push(productoParaCarrito);
       localStorage.setItem("MyCart", JSON.stringify(carrito));
-      
-      // 4. Disparar evento para que el Header/Navbar se entere del cambio
       window.dispatchEvent(new Event('storage'));
       alert(`${producto.nombre} añadido al carrito 🛒`);
     } else {
@@ -121,57 +39,73 @@ export const Article = () => {
     const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
     const existe = favoritos.find(item => item.id === producto.id);
     if (!existe) {
-      favoritos.push(producto);
+      const productoFav = { ...producto, img: producto.imagen };
+      favoritos.push(productoFav);
       localStorage.setItem("favoritos", JSON.stringify(favoritos));
       alert("Añadido a favoritos ⭐");
     }
   };
 
   return (
-    <Container sx={{ mt: 4, mb: 10 }}>
-      <Typography variant="h3" fontWeight="900" sx={{ color: '#003366', mb: 4 }}>
+    <Container sx={{ mt: 4, mb: 10, maxWidth: 'lg' }}>
+      <Typography variant="h3" fontWeight="900" sx={{ color: '#003366', mb: 6, textAlign: 'center' }}>
         SNEAKERS <span style={{ color: '#007bff' }}>SHOP</span>
       </Typography>
 
-      <Grid container spacing={3}>
+      {/* Grid configurado para centrar y mostrar 3 columnas en escritorio (md=4) */}
+      <Grid container spacing={4} justifyContent="center" alignItems="stretch">
         {tenis.map((sneaker) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={sneaker.id}>
+          <Grid item xs={12} sm={6} md={4} key={sneaker.id} sx={{ display: 'flex', justifyContent: 'center' }}>
             <Card sx={{ 
-              height: '100%', 
               display: 'flex', 
               flexDirection: 'column',
-              borderRadius: 3,
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              overflow: 'hidden'
+              width: '100%',
+              maxWidth: 360, // Mantiene un tamaño elegante
+              borderRadius: 4,
+              boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              '&:hover': { 
+                transform: 'translateY(-10px)',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.15)'
+              }
             }}>
-              <CardMedia
-                component="img"
-                height="250"
-                image={sneaker.imagen}
-                alt={sneaker.nombre}
-                sx={{ transition: '0.3s', '&:hover': { transform: 'scale(1.05)' } }}
-              />
+              <Box sx={{ position: 'relative' }}>
+                <CardMedia
+                  component="img"
+                  height="240"
+                  image={sneaker.imagen}
+                  alt={sneaker.nombre}
+                  sx={{ objectFit: 'cover' }}
+                />
+              </Box>
 
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h6" fontWeight="bold" sx={{ color: '#1a1a1a' }}>
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 3 }}>
+                <Typography variant="h6" fontWeight="bold" sx={{ color: '#1a1a1a', minHeight: '60px', lineHeight: 1.2, mb: 1 }}>
                   {sneaker.nombre}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, height: '40px' }}>
+                
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, minHeight: '40px', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {sneaker.descripcion}
                 </Typography>
-                <Typography variant="h5" sx={{ color: '#007bff', fontWeight: 800 }}>
-                  ${sneaker.precio.toLocaleString()}
-                </Typography>
-                <Chip
-                  label={sneaker.stock ? 'En Stock' : 'Agotado'}
-                  color={sneaker.stock ? 'success' : 'error'}
-                  variant="outlined"
-                  size="small"
-                  sx={{ mt: 1, fontWeight: 'bold' }}
-                />
+
+                <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box>
+                    <Typography variant="h5" sx={{ color: '#007bff', fontWeight: 800 }}>
+                      ${sneaker.precio.toLocaleString()}
+                    </Typography>
+                    <Chip
+                      label={sneaker.stock ? 'En Stock' : 'Agotado'}
+                      color={sneaker.stock ? 'success' : 'error'}
+                      variant="filled"
+                      size="small"
+                      sx={{ fontWeight: 'bold', mt: 0.5 }}
+                    />
+                  </Box>
+                </Box>
               </CardContent>
 
-              <Stack spacing={1} sx={{ p: 2 }}>
+              <Stack spacing={1.5} sx={{ p: 3, pt: 0 }}>
                 <Button
                   variant="contained"
                   fullWidth
@@ -181,10 +115,13 @@ export const Article = () => {
                   sx={{ 
                     bgcolor: '#007bff', 
                     fontWeight: 'bold',
+                    py: 1.2,
+                    borderRadius: 2,
+                    textTransform: 'none',
                     '&:hover': { bgcolor: '#0056b3' }
                   }}
                 >
-                  Agregar
+                  Agregar al carrito
                 </Button>
 
                 <Button
@@ -193,7 +130,12 @@ export const Article = () => {
                   fullWidth
                   startIcon={<GradeIcon />}
                   onClick={() => agregarFavorito(sneaker)}
-                  sx={{ fontWeight: 'bold' }}
+                  sx={{ 
+                    fontWeight: 'bold', 
+                    py: 1.2,
+                    borderRadius: 2,
+                    textTransform: 'none'
+                  }}
                 >
                   Favoritos
                 </Button>

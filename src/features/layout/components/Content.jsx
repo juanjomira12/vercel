@@ -15,6 +15,7 @@ import {
 import GroupsIcon from '@mui/icons-material/Groups';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 export const Content = () => {
   const productos = [
@@ -26,7 +27,6 @@ export const Content = () => {
   return (
     <Box sx={{ bgcolor: '#f0f2f5', minHeight: '100vh', width: '100%' }}>
       
-      {/* HERO SECTION - TOTALMENTE CENTRADO */}
       <Box
         sx={{
           height: "60vh",
@@ -119,6 +119,51 @@ export const Content = () => {
           ))}
         </Grid>
       </Container>
+     <section>
+{/* SECCIÓN FINAL CON LINK */}
+      <Container maxWidth="lg" sx={{ pb: 8 }}>
+        <Paper 
+          elevation={0}
+          sx={{
+            p: 6,
+            borderRadius: 6, // Consistente con tus otros Paper
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, #003366 0%, #007bff 100%)',
+            color: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 2
+          }}
+        >
+          
+          <Typography variant="body1" sx={{ opacity: 0.9, mb: 2 }}>
+GITPAGE          </Typography>
+
+          <Button
+            component={Link}
+            to="https://github.com/juanjomira12/vercel"
+            variant="contained"
+            endIcon={<LaunchIcon />}
+            sx={{
+              bgcolor: 'white',
+              color: '#003366',
+              fontWeight: 'bold',
+              px: 4,
+              py: 1.5,
+              borderRadius: '50px',
+              '&:hover': {
+                bgcolor: '#f0f0f0',
+                transform: 'translateY(-3px)',
+                transition: '0.3s'
+              }
+            }}
+          >
+Ve y mira el repositorio          </Button>
+        </Paper>
+      </Container>
+     </section>
+
     </Box>
   );
 };
