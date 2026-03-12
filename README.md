@@ -1,18 +1,60 @@
-# React + Vite
+👟 MiraShop - Sneakers Store
+¡Bienvenido a MiraShop! Una plataforma de comercio electrónico moderna y robusta desarrollada con React, Vite y Material UI. Este proyecto representa mi avance técnico en el desarrollo de aplicaciones web interactivas dentro de mi formación en el SENA.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📝 Descripción
+MiraShop no es solo una tienda de tenis; es una experiencia de usuario optimizada donde el diseño urbano se encuentra con la funcionalidad técnica. La aplicación gestiona un catálogo dinámico de calzado, permitiendo a los usuarios interactuar con productos en tiempo real, manejar carritos de compra y gestionar preferencias personales a través de una interfaz limpia y profesional.
 
-Currently, two official plugins are available:
+🚀 Características Principales
+Grid Centrado: Layout dinámico que muestra 3 productos por fila, centrando automáticamente los elementos restantes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Ecosistema de Hooks: Implementación de hooks personalizados para el manejo de estados complejos (Contador, Reloj, Estado de Conexión).
 
-## React Compiler
+Persistencia de Datos: Uso de localStorage para que el carrito y los favoritos sobrevivan al cierre del navegador.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Diseño Atómico: Separación clara entre componentes de interfaz (UI) y lógica de negocio.
 
-Note: This will impact Vite dev & build performances.
+Responsive Design: Optimizado para una navegación perfecta desde móviles hasta monitores de escritorio.
 
-## Expanding the ESLint configuration
+🎨 Interfaz Gráfica
+La estética de MiraShop se basa en Material Design, priorizando la claridad y la jerarquía visual:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Elevación y Profundidad: Las tarjetas de producto utilizan sombras dinámicas (box-shadow) que reaccionan al interactuar con ellas.
+
+Microinteracciones: Botones con cambios de estado y transiciones suaves.
+
+Feedback Visual: Uso de Chips de colores para comunicar el estado del inventario de forma inmediata.
+
+🏗️ Arquitectura del Proyecto
+El proyecto implementa una arquitectura basada en Módulos/Features, lo que facilita el mantenimiento y la escalabilidad:
+
+Plaintext
+src/
+├── features/
+│   ├── Articles/          
+│   │   ├── components/    # Article.jsx, Carrito.jsx, ProductCard.jsx
+│   │   └── hooks/         # contador.jsx, reloj.jsx, onlineStatus.jsx
+│   ├── Auth/              
+│   │   └── components/    # Myaccount.jsx, Myfavorities.jsx
+│   └── layout/            
+│       └── components/    # Header.jsx, Footer.jsx, Content.jsx
+├── shared/                # Componentes y estilos globales
+├── App.jsx                # Lógica de estados globales
+├── main.jsx               # Punto de entrada (Vite)
+└── Routes.jsx             # Manejo de la navegación
+🛠️ Tecnologías y Herramientas
+Vite: Herramienta de construcción de última generación para un desarrollo rápido.
+
+React 18: Biblioteca principal para la construcción de interfaces de usuario.
+
+Material UI (MUI): Framework de diseño para componentes listos para producción.
+
+ESLint: Para asegurar la calidad y el estándar del código.
+
+📌 Datos del Autor
+Estudiante: Juan Jose Mira
+
+Institución: SENA (Servicio Nacional de Aprendizaje)
+
+Proyecto: MiraShop (Tienda Virtual de Sneakers)
+
+Ubicación: Medellín, Antioquia.
